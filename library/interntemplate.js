@@ -1,8 +1,10 @@
+const employeetemplate = require('employeetemplate');
+
 class intern {
     constructor(name, id, email, school){
-        this.name = name;
-        this.id = id;
-        this.email = email;
+        employee.call(this, name, id, email)
         this.school = school;
     }
 }
+
+module.exports = interntemplate;

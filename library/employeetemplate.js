@@ -5,3 +5,5 @@ class employee {
         this.email = email;
     }
 }
+
+module.exports = employeetemplate;
