@@ -1,10 +1,19 @@
-const employeetemplate = require('employeetemplate');
+const Employee = require('./employeetemplate.js');
 
-class intern {
+
+class Intern extends Employee {
     constructor(name, id, email, school){
         employee.call(this, name, id, email)
         this.school = school;
     }
+    
+    getSchool(){
+        return this.school;
+    }
+    
+    getRole(){
+        return 'Intern';
+    }
 }
 
-module.exports = interntemplate;
+module.exports = Intern;
