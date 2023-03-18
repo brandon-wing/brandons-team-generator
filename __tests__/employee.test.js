@@ -1,65 +1,41 @@
 const Employee = require('../library/employeetemplate');
 
 
-describe('testing Employee construction', () => {
+describe('testing employee construction', () => {
+    test('that the name matches.', () => {
+        let employee = new Employee('Brandon Wing', 11, 'test@email.com');
+        expect(employee.name).toBe('Brandon Wing');
+});
 
+    test('that the ID number matches.', () => {
+        let employee = new Employee('Brandon Wing', 11, 'test@email.com');
+        expect(employee.id).toBe(11);
+});
 
-    test('creating an Employee Object Instance', () => {
+    test('that the email matches.', () => {
+        let employee = new Employee('Brandon Wing', 11, 'test@email.com');
+        expect(employee.email).toBe('test@email.com');
+});
+});
 
-        // SETUP --> create or initialize an object, DATA something to test against
-        let employee = new Employee();
+describe('testing employee get functions', () => {
+    test('the getName function should return the name of the employee.', () => {
+        let employee = new Employee("Brandon Wing", 11, "test@email.com");
+        expect(employee.getName()).toBe(employee.name);
+});
 
-        // TESTING
+    test('the getId function should return the ID number of the employee.', () => {
+        let employee = new Employee("Brandon Wing", 11, "test@email.com");
+        expect(employee.getId()).toBe(employee.id);
+});
 
-        expect(typeof employee).toBe('object');
-    });
+    test('the getEmail function should return the email of the employee.', () => {
+        let employee = new Employee("Brandon Wing", 11, "test@email.com");
+        expect(employee.getEmail()).toBe(employee.email);
+});
 
-    test('creating an Employee Object Instance', () => {
-
-        // SETUP --> create or initialize an object, DATA something to test against
-        let employee = new Employee();
-
-        // TESTING
-        expect(employee).toBeDefined();
-    });
-
-    it('creating an Employee Name', () => {
-
-        // SETUP --> create or initialize an object, DATA something to test against
-        let test = "bill"
-        let employee = new Employee(test);
-        // console.log(employee);
-        // TESTING
-        
-        expect(employee.name).toBe(test)
-    });
-
-    it('creating an Employee ID', () => {
-
-        // SETUP --> create or initialize an object, DATA something to test against
-        let test = "bill"
-        let idNum = 10;
-        let testEmail = "bill@me.com";
-        let employee = new Employee(test, idNum, testEmail);
-        // console.log(employee);
-        
-        // TESTING
-        
-        expect(employee.id).toBe(idNum)
-    });
-    
-    it('testing getName method on Employee Instance', () => {
-        
-        // SETUP --> create or initialize an object, DATA something to test against
-        let test = "bill"
-        let employee = new Employee(test, 12, "bill@me.com");
-        console.log(employee);
-
-        // TESTING
-
-        expect(employee.getName()).toBe(test)
-    });
-
-
-
-  });
+    test('the getRole function should return the role of the employee.', () => {
+        let employee = new Employee
+        expect(employee.getRole()).toBe('employee');
+});
+});
