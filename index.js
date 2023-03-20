@@ -1,19 +1,23 @@
+//requiring the packages
 const fs = require('fs')
 const inquirer = require('inquirer')
-
-const managertemplate = require('./library/managertemplate.js')
-const engineertemplate = require('./library/engineertemplate.js')
-const interntemplate = require('./library/interntemplate.js')
-const employeetemplate = require('./library/employeetemplate.js')
-
-const memberType = [{
-      type: 'list',
-      message: 'What kind of member do we need to add to the team?',
-      name: 'memberType',
-      choices: ['Manager', 'Engineer', 'Intern', 'Everyone has already been listed!']
-}];
-
+//requiring all the templates
+const Manager = require('./library/managertemplate.js')
+const Engineer = require('./library/engineertemplate.js')
+const Intern = require('./library/interntemplate.js')
+const Employee = require('./library/employeetemplate.js')
+//requiring the template helper code in the src folder
+const templateHelper = require('./src/template.js')
+//we have to create an empty array for employees to be added to!
+const employeeList = []
+//this will be the first prompt that determines which, if any, employees to add to the array.
 function firstQuestion() {
+    const memberType = [{
+        type: 'list',
+        message: 'What kind of member do we need to add to the team?',
+        name: 'memberType',
+        choices: ['Manager', 'Engineer', 'Intern', 'Everyone has already been listed!']
+  }];  
     inquirer.prompt(memberType)
         .then(data => {
             if (data.memberType === 'Manager'){
@@ -53,7 +57,10 @@ function managerPrompt(){
         }];
         inquirer.prompt(managerInfo)
         .then(answer => {
+            //creates an instance of a manager with each answer into its correct place
             const manager = new Manager(answer.memberType, answer.id, answer.email, answer.phone);
+            //add the new manager to the array!
+            employeeList.push(manager)
             firstQuestion();
     })};
 
@@ -78,9 +85,10 @@ function engineerPrompt(){
             message: 'What is their phone number?',
             name:'phone'
         }];
-        inquirer.prompt(internInfo)
+        inquirer.prompt(engineerInfo)
         .then(answer => {
             const engineer = new Engineer(answer.memberType, answer.id, answer.email, answer.github);
+            employeeList.push(engineer)
             firstQuestion();
     })};
     
@@ -107,14 +115,20 @@ function internPrompt(){
         }];
         inquirer.prompt(internInfo)
         .then(answer => {
-            const intern = new intern(answer.memberType, answer.id, answer.email, answer.school);
+            const intern = new Intern(answer.memberType, answer.id, answer.email, answer.school);
+            employeeList.push(intern)
             firstQuestion();
+
     })};
 
 
 firstQuestion();
-
-function generatePage(){};
+//much like the homework assignment previously, we are going to use fileshare to generate and HTML page
+function generatePage(){
+    fs.writeFile('./dist/index.html', data, err => {
+        if (err) throw err;
+      });
+};
 
 
 
