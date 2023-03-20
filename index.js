@@ -124,17 +124,28 @@ function internPrompt(){
     })};
 
 
+    //much like the homework assignment previously, we are going to use fileshare to generate and HTML page
+    function generatePage(){
+        function writeToFile(fileName, data) {
+            fs.writeFile(fileName, data, (err) => {
+              if (err)
+                console.log(err);
+              else {
+                console.log("New HTML written successfully!");
+              }
+            })
+            
+            }
+        //pass the array of employees to the templateHelper js file
+        let list = templateHelper(employeeList)
+        //write the data from the list to an index.html file in the dist folder
+        writeToFile('./dist/index.html', list, err => {
+            if (err) throw err;
+          });
+    };
 firstQuestion();
 
-//much like the homework assignment previously, we are going to use fileshare to generate and HTML page
-function generatePage(){
-    //pass the array of employees to the templateHelper js file
-    let list = templateHelper(employeeList)
-    //write the data from the list to an index.html file in the dist folder
-    fs.writeFile('./dist/index.html', list, err => {
-        if (err) throw err;
-      });
-};
+
 
 
 

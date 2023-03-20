@@ -1,4 +1,4 @@
-function generatePage(employeeList) {
+function generateHTML(employeeList) {
 
 let html = `<!DOCTYPE html>
 <html>
@@ -19,11 +19,13 @@ let html = `<!DOCTYPE html>
           </p>
         </div>
       </section>
-      <section>`
+      <section>
+      <div class="columns">`
       for (let i = 0; i < employeeList.length; i++) {
         const employee = employeeList[i];
         let employeeCard =
-        `<div class="card">
+        `<div class="column">
+        <div class="card">
             <div class="card-content">
             <div class="media">
             <div class="media-left">
@@ -48,10 +50,15 @@ let html = `<!DOCTYPE html>
               employeeCard += `</div>
           </div>
         </div>
+      </div>
       </div>`}
+
 html +=
-      `</section>
+      `</div>
+      </section>
   </body>
 </html>`
 return html;
 }
+
+module.exports = generateHTML
