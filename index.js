@@ -61,6 +61,7 @@ function managerPrompt(){
             const manager = new Manager(answer.memberType, answer.id, answer.email, answer.phone);
             //add the new manager to the array!
             employeeList.push(manager)
+            console.log("employees: ", employeeList)
             firstQuestion();
     })};
 
@@ -82,13 +83,14 @@ function engineerPrompt(){
         },
         {
             type: 'input',
-            message: 'What is their phone number?',
-            name:'phone'
+            message: 'What is their Github username?',
+            name:'github'
         }];
         inquirer.prompt(engineerInfo)
         .then(answer => {
             const engineer = new Engineer(answer.memberType, answer.id, answer.email, answer.github);
             employeeList.push(engineer)
+            console.log("employees: ", employeeList)
             firstQuestion();
     })};
     
@@ -110,22 +112,26 @@ function internPrompt(){
         },
         {
             type: 'input',
-            message: 'What is their phone number?',
-            name:'phone'
+            message: 'What school do they attend?',
+            name:'school'
         }];
         inquirer.prompt(internInfo)
         .then(answer => {
             const intern = new Intern(answer.memberType, answer.id, answer.email, answer.school);
             employeeList.push(intern)
+            console.log("employees: ", employeeList)
             firstQuestion();
-
     })};
 
 
 firstQuestion();
+
 //much like the homework assignment previously, we are going to use fileshare to generate and HTML page
 function generatePage(){
-    fs.writeFile('./dist/index.html', data, err => {
+    //pass the array of employees to the templateHelper js file
+    let list = template(employeeList)
+    //write the data from the list to an index.html file in the dist folder
+    fs.writeFile('./dist/index.html', list, err => {
         if (err) throw err;
       });
 };
