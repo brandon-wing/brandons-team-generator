@@ -45,7 +45,7 @@ describe('testing Engineer get functions', () => {
 
 test('the getRole function should return the role of the engineer.', () => {
     let engineer = new Engineer
-    expect(engineer.getRole()).toBe('engineer');
+    expect(engineer.getRole()).toBe('Engineer');
 });
 });
 

@@ -36,6 +36,6 @@ describe('testing employee get functions', () => {
 
     test('the getRole function should return the role of the employee.', () => {
         let employee = new Employee
-        expect(employee.getRole()).toBe('employee');
+        expect(employee.getRole()).toBe('Employee');
 });
 });

@@ -45,6 +45,6 @@ describe('testing Manager construction', () => {
 
     test('the getRole function should return the role of the manager.', () => {
         let manager = new Manager
-        expect(manager.getRole()).toBe('manager');
+        expect(manager.getRole()).toBe('Manager');
 });
 });

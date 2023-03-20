@@ -45,6 +45,6 @@ describe('testing intern get functions', () => {
 
     test('the getRole function should return the role of the intern.', () => {
         let intern = new Intern
-        expect(intern.getRole()).toBe('intern');
+        expect(intern.getRole()).toBe('Intern');
 });
 });

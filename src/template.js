@@ -45,7 +45,7 @@ let html = `<!DOCTYPE html>
                 employeeCard += `<p class="subtitle is-6">Phone: ${employee.getPhone()}`
               }
               else if (employee.getRole() === 'Engineer'){
-                employeeCard += `<p class="subtitle is-6">Github: <a href="github.com/${employee.getGithub()}">${employee.getGithub()}</a></p>`
+                employeeCard += `<p class="subtitle is-6">Github: <a href="https://github.com/${employee.getGithub()}">${employee.getGithub()}</a></p>`
               }
               else if (employee.getRole() === 'Intern'){
                 employeeCard += `<p class="subtitle is-6">School: ${employee.getSchool()}`
@@ -56,13 +56,9 @@ let html = `<!DOCTYPE html>
         </div>
       </div>`
     }
-    console.log("Employee Card: ", employeeCard)
     html += employeeCard + `</section></div>
       </body>
     </html>`
-    
-    
-    console.log("HTML: ", html)
 return html;
 }
 
