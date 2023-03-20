@@ -1,5 +1,7 @@
 function generateHTML(employeeList) {
 
+let employeeCard = '';
+
 let html = `<!DOCTYPE html>
 <html>
   <head>
@@ -22,12 +24,13 @@ let html = `<!DOCTYPE html>
       <section>
       <div class="columns">`
       for (let i = 0; i < employeeList.length; i++) {
+
         const employee = employeeList[i];
-        let employeeCard =
-        `<div class="column">
+
+        employeeCard += `<div class="column">
         <div class="card">
-            <div class="card-content">
-            <div class="media">
+        <div class="card-content">
+          <div class="media">
             <div class="media-left">
               <figure class="image is-48x48">
                 <img src="../assets/smiley.jpeg" alt="employee-avatar">
@@ -39,7 +42,7 @@ let html = `<!DOCTYPE html>
               <p class="subtitle is-6">ID #: ${employee.getId()}</p>
               <p class="subtitle is-6">EMAIL: <a href="mailto:${employee.getEmail()}">${employee.getEmail()}</a></p>`
               if (employee.getRole() === 'Manager'){
-                employeeCard += `<p class="subtitle is-6">${employee.getPhone()}`
+                employeeCard += `<p class="subtitle is-6">Phone: ${employee.getPhone()}`
               }
               else if (employee.getRole() === 'Engineer'){
                 employeeCard += `<p class="subtitle is-6">Github: <a href="github.com/${employee.getGithub()}">${employee.getGithub()}</a></p>`
@@ -48,16 +51,18 @@ let html = `<!DOCTYPE html>
                 employeeCard += `<p class="subtitle is-6">School: ${employee.getSchool()}`
               }
               employeeCard += `</div>
+              </div>
           </div>
         </div>
-      </div>
-      </div>`}
-
-html +=
-      `</div>
-      </section>
-  </body>
-</html>`
+      </div>`
+    }
+    console.log("Employee Card: ", employeeCard)
+    html += employeeCard + `</section></div>
+      </body>
+    </html>`
+    
+    
+    console.log("HTML: ", html)
 return html;
 }
 
