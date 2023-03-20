@@ -129,12 +129,13 @@ firstQuestion();
 //much like the homework assignment previously, we are going to use fileshare to generate and HTML page
 function generatePage(){
     //pass the array of employees to the templateHelper js file
-    let list = template(employeeList)
+    let list = templateHelper(employeeList)
     //write the data from the list to an index.html file in the dist folder
     fs.writeFile('./dist/index.html', list, err => {
         if (err) throw err;
       });
 };
+
 
 
 
